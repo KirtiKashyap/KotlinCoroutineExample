@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.ViewModelProvider
-import com.example.myapplication.App.Companion.prefs
 import com.example.myapplication.R
 import com.example.myapplication.databinding.ActivityAuthorizationBinding
 import com.example.myapplication.model.request.TokenRequest
@@ -108,10 +107,35 @@ class AuthorizationActivity : AppCompatActivity() {
                         sharedPreference.save("APP_PREF_TOKEN_TYPE",it.token_type)
                         sharedPreference.save("APP_PREF_ACCESS_TOKEN",it.access_token)
 
+                        val token =sharedPreference.getValueString("APP_PREF_TOKEN_TYPE")+" "+sharedPreference.getValueString("APP_PREF_ACCESS_TOKEN")
+                        viewModel.getUserProfile(token)
                         val intent = Intent(this, ConversationActivity::class.java).apply {
                             finish()
                         }
                         startActivity(intent)
+                    }
+                }
+                is Resource.Error -> {
+                    // hideProgressBar()
+                    response.message?.let { message ->
+                        //Log.e(TAG, "An error occured: $message")
+                    }
+                }
+                is Resource.Loading -> {
+                    //showProgressBar()
+                }
+            }
+        })
+
+
+
+        viewModel.userProfile.observe(this, { response ->
+            when(response) {
+                is Resource.Success -> {
+                    //hideProgressBar()
+                    response.data?.let {
+
+                        it
                     }
                 }
                 is Resource.Error -> {

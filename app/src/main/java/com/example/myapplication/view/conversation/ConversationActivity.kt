@@ -2,7 +2,6 @@ package com.example.myapplication.view.conversation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.databinding.ActivityConversationBinding
 import com.example.myapplication.repository.ConversationRepository
@@ -24,7 +23,7 @@ class ConversationActivity : AppCompatActivity() {
         val token =sharedPreference.getValueString("APP_PREF_TOKEN_TYPE")+" "+sharedPreference.getValueString("APP_PREF_ACCESS_TOKEN")
 
        viewModel.getList(token)
-        viewModel.conversationList.observe(this, Observer { response ->
+        viewModel.conversationList.observe(this, { response ->
             when(response) {
                 is Resource.Success -> {
                     //hideProgressBar()

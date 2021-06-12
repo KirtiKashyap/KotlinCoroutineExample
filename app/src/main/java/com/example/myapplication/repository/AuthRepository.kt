@@ -6,4 +6,6 @@ import com.example.myapplication.model.request.TokenRequest
 class AuthRepository() {
     suspend fun getAuthorization(request: TokenRequest) =
         RetrofitInstance.api.getToken(request)
+    suspend fun getUserProfile(token: String) =
+        RetrofitInstance.api.getUserProfile(token)
 }
