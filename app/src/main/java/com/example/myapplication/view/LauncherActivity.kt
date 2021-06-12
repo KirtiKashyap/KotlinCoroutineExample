@@ -12,8 +12,7 @@ import com.example.myapplication.utils.Resource
 import com.example.myapplication.view.authorization.AuthorizationViewModel
 import com.example.myapplication.view.authorization.AuthorizationViewModelFactory
 import com.example.myapplication.view.conversation.ConversationActivity
-import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_login.*
+import kotlinx.android.synthetic.main.activity_launcher.*
 
 class LauncherActivity : AppCompatActivity() {
     lateinit var viewModel: AuthorizationViewModel
@@ -30,7 +29,7 @@ class LauncherActivity : AppCompatActivity() {
         }
 
 
-        viewModel.tokenData.observe(this, Observer { response ->
+        viewModel.tokenData.observe(this, { response ->
             when(response) {
                 is Resource.Success -> {
                     //hideProgressBar()
