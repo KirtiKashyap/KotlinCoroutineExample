@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="title_activity_my_test">MyTestActivity</string>
+
+    <!-- Resources for Bank2LogInActivity -->
+    <string name="don_t_have_an_account_sign_up">Don’t have an account? Sign Up</string>
+    <string name="welcom_back_log_in_to_continue_with_messaging">Welcome back. Log in to continue with Messaging.</string>
+    <string name="title_activity_main">MainActivity</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
+    <string name="title_activity_container">ContainerActivity</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
