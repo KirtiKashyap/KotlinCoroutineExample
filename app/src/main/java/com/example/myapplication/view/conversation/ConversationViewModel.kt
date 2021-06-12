@@ -3,7 +3,7 @@ package com.example.myapplication.view.conversation
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.myapplication.model.conversation.ConversationList
+import com.example.myapplication.model.response.conversation.ConversationList
 import com.example.myapplication.repository.ConversationRepository
 import com.example.myapplication.utils.Resource
 import kotlinx.coroutines.launch

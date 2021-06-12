@@ -1,4 +1,4 @@
-package com.example.myapplication.model.conversation
+package com.example.myapplication.model.response.conversation
 
 data class ConversationList(val data : List<ListData> ?)
 

@@ -7,26 +7,22 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.R
-import com.example.myapplication.databinding.ActivityLauncherBinding
+import com.example.myapplication.databinding.ActivityAuthorizationBinding
 import com.example.myapplication.model.request.TokenRequest
 import com.example.myapplication.repository.AuthRepository
 import com.example.myapplication.utils.Resource
 import com.example.myapplication.view.authorization.AuthorizationViewModel
 import com.example.myapplication.view.authorization.AuthorizationViewModelFactory
 import com.example.myapplication.view.conversation.ConversationActivity
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.firebase.ktx.Firebase
-import com.google.firebase.messaging.ktx.messaging
-import kotlinx.android.synthetic.main.activity_launcher.*
 
-class LauncherActivity : AppCompatActivity() {
+
+class AuthorizationActivity : AppCompatActivity() {
     lateinit var viewModel: AuthorizationViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ActivityLauncherBinding.inflate(layoutInflater)
+        val binding = ActivityAuthorizationBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
 
@@ -88,18 +84,13 @@ class LauncherActivity : AppCompatActivity() {
         }*/
 
 
-
-
-
-
-
         val authRepository = AuthRepository()
         val viewModelProviderFactory = AuthorizationViewModelFactory(authRepository)
         viewModel = ViewModelProvider(this, viewModelProviderFactory).get(
             AuthorizationViewModel::class.java)
 
         binding.loginButton.setOnClickListener {
-            val tokenRequest= TokenRequest(email = userName.text.toString(),password = passWord.text.toString())
+            val tokenRequest= TokenRequest(email = binding.userName.text.toString(),password = binding.passWord.text.toString())
             viewModel.getToken(tokenRequest)
         }
 

@@ -10,5 +10,8 @@
     <string name="msg_subscribed">Subscribed to weather topic</string>
     <string name="msg_token_fmt" translatable="false">FCM registration Token: %s</string>
     <string name="msg_subscribe_failed">Failed to subscribe to weather topic</string>
+    <string name="title_activity_splash">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 
 </resources>
