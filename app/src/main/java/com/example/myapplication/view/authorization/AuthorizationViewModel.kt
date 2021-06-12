@@ -8,6 +8,7 @@ import com.example.myapplication.model.response.profile.UserProfile
 import com.example.myapplication.model.response.token.GetToken
 import com.example.myapplication.repository.AuthRepository
 import com.example.myapplication.utils.Resource
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import retrofit2.Response
 
@@ -25,8 +26,8 @@ class AuthorizationViewModel (private val authRepository: AuthRepository): ViewM
     fun getUserProfile(token: String) = viewModelScope.launch() {
 
         userProfile.postValue(Resource.Loading())
-        val responseData = authRepository.getUserProfile(token)
-        userProfile.postValue(handleProfileResponse(responseData))
+        val responseData = async {  authRepository.getUserProfile(token)}
+        userProfile.postValue(handleProfileResponse(responseData.await()))
     }
 
     private fun handleProfileResponse(response: Response<UserProfile>) : Resource<UserProfile> {

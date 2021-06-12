@@ -20,12 +20,11 @@ import com.example.myapplication.view.conversation.ConversationActivity
 
 
 class AuthorizationActivity : AppCompatActivity() {
-    lateinit var viewModel: AuthorizationViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ActivityAuthorizationBinding.inflate(layoutInflater)
+        val binding=ActivityAuthorizationBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val sharedPreference= SharedPref(this)
 
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -85,70 +84,7 @@ class AuthorizationActivity : AppCompatActivity() {
         }*/
 
 
-        val authRepository = AuthRepository()
-        val viewModelProviderFactory = AuthorizationViewModelFactory(authRepository)
-        viewModel = ViewModelProvider(this, viewModelProviderFactory).get(
-            AuthorizationViewModel::class.java)
 
-        binding.loginButton.setOnClickListener {
-            val tokenRequest= TokenRequest(email = binding.userName.text.toString(),password = binding.passWord.text.toString())
-            viewModel.getToken(tokenRequest)
-        }
-
-
-        viewModel.tokenData.observe(this, { response ->
-            when(response) {
-                is Resource.Success -> {
-                    //hideProgressBar()
-                    response.data?.let {
-
-                        it.is_verified
-
-                        sharedPreference.save("APP_PREF_TOKEN_TYPE",it.token_type)
-                        sharedPreference.save("APP_PREF_ACCESS_TOKEN",it.access_token)
-
-                        val token =sharedPreference.getValueString("APP_PREF_TOKEN_TYPE")+" "+sharedPreference.getValueString("APP_PREF_ACCESS_TOKEN")
-                        viewModel.getUserProfile(token)
-                        val intent = Intent(this, ConversationActivity::class.java).apply {
-                            finish()
-                        }
-                        startActivity(intent)
-                    }
-                }
-                is Resource.Error -> {
-                    // hideProgressBar()
-                    response.message?.let { message ->
-                        //Log.e(TAG, "An error occured: $message")
-                    }
-                }
-                is Resource.Loading -> {
-                    //showProgressBar()
-                }
-            }
-        })
-
-
-
-        viewModel.userProfile.observe(this, { response ->
-            when(response) {
-                is Resource.Success -> {
-                    //hideProgressBar()
-                    response.data?.let {
-
-                        it
-                    }
-                }
-                is Resource.Error -> {
-                    // hideProgressBar()
-                    response.message?.let { message ->
-                        //Log.e(TAG, "An error occured: $message")
-                    }
-                }
-                is Resource.Loading -> {
-                    //showProgressBar()
-                }
-            }
-        })
 
     }
 

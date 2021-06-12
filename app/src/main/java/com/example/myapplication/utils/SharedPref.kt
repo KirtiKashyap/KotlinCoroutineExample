@@ -2,8 +2,9 @@ package com.example.myapplication.utils
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.example.myapplication.view.authorization.LoginFragment
 
-class SharedPref(context : Context) {
+class SharedPref(context: Context) {
     private val PREFS_NAME = "MESSAGING_APP_PREF"
     private val sharedPref: SharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
 
