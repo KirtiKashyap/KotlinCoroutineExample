@@ -8,11 +8,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.ViewModelProvider
+import com.example.myapplication.App.Companion.prefs
 import com.example.myapplication.R
 import com.example.myapplication.databinding.ActivityAuthorizationBinding
 import com.example.myapplication.model.request.TokenRequest
 import com.example.myapplication.repository.AuthRepository
 import com.example.myapplication.utils.Resource
+import com.example.myapplication.utils.SharedPref
 import com.example.myapplication.view.authorization.AuthorizationViewModel
 import com.example.myapplication.view.authorization.AuthorizationViewModelFactory
 import com.example.myapplication.view.conversation.ConversationActivity
@@ -24,7 +26,7 @@ class AuthorizationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityAuthorizationBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        val sharedPreference= SharedPref(this)
 
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -100,11 +102,13 @@ class AuthorizationActivity : AppCompatActivity() {
                 is Resource.Success -> {
                     //hideProgressBar()
                     response.data?.let {
-                        it.access_token
-                        it.token_type
+
                         it.is_verified
+
+                        sharedPreference.save("APP_PREF_TOKEN_TYPE",it.token_type)
+                        sharedPreference.save("APP_PREF_ACCESS_TOKEN",it.access_token)
+
                         val intent = Intent(this, ConversationActivity::class.java).apply {
-                            //putExtra(EXTRA_MESSAGE, message)
                             finish()
                         }
                         startActivity(intent)

@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.databinding.ActivityConversationBinding
 import com.example.myapplication.repository.ConversationRepository
 import com.example.myapplication.utils.Resource
+import com.example.myapplication.utils.SharedPref
 
 class ConversationActivity : AppCompatActivity() {
     lateinit var viewModel: ConversationViewModel
@@ -19,8 +20,10 @@ class ConversationActivity : AppCompatActivity() {
         val viewModelProviderFactory = ConversationVIewModelFactory(conversationRepository)
         viewModel = ViewModelProvider(this, viewModelProviderFactory).get(
                 ConversationViewModel::class.java)
+        val sharedPreference= SharedPref(this)
+        val token =sharedPreference.getValueString("APP_PREF_TOKEN_TYPE")+" "+sharedPreference.getValueString("APP_PREF_ACCESS_TOKEN")
 
-       viewModel.getList("Bearer 286|u9Z0mD2mGSktflG0e2dA947K37plx8N73xU4XJJY")
+       viewModel.getList(token)
         viewModel.conversationList.observe(this, Observer { response ->
             when(response) {
                 is Resource.Success -> {
