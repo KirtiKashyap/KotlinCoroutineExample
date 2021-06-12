@@ -9,8 +9,6 @@ import android.media.RingtoneManager
 import android.os.Build
 import android.util.Log
 import androidx.core.app.NotificationCompat
-import androidx.work.OneTimeWorkRequest
-import androidx.work.WorkManager
 import com.example.myapplication.view.conversation.ConversationActivity
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
@@ -33,16 +31,6 @@ class MyFirebaseInstanceIDService : FirebaseMessagingService(){
             Log.d(TAG, "Message data payload: ${remoteMessage.data}")
 
             sendNotification(remoteMessage.data.toString())
-
-//            if (/* Check if data needs to be processed by long running job */ true) {
-//                // For long-running tasks (10 seconds or more) use WorkManager.
-//                scheduleJob()
-//            } else {
-//                // Handle message within 10 seconds
-//                handleNow()
-//            }
-
-
         }
 
         // Check if message contains a notification payload.(call when app is in foreground)
@@ -72,22 +60,6 @@ class MyFirebaseInstanceIDService : FirebaseMessagingService(){
     }
     // [END on_new_token]
 
-    /**
-     * Schedule async work using WorkManager.
-     */
-    private fun scheduleJob() {
-        // [START dispatch_job]
-        val work = OneTimeWorkRequest.Builder(MyWorker::class.java).build()
-        WorkManager.getInstance().beginWith(work).enqueue()
-        // [END dispatch_job]
-    }
-
-    /**
-     * Handle time allotted to BroadcastReceivers.
-     */
-    private fun handleNow() {
-        Log.d(TAG, "Short lived task is done.")
-    }
 
     /**
      * Persist token to third-party servers.
