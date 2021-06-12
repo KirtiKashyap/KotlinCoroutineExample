@@ -1,7 +1,9 @@
-<RelativeLayout
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+<RelativeLayout
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF">
@@ -72,7 +74,7 @@
                     android:fontFamily="@font/font_opensans_light"
                     android:gravity="start"
                     android:lineSpacingMultiplier="1.5"
-                    android:text="@string/welcom_back_log_in_to_continue_with_messaging"
+                    android:text="@string/welcome_back_log_in_to_continue_with_messaging"
                     android:textColor="#19224C"
                     android:textSize="20sp"
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -291,4 +293,4 @@
         tools:layout_editor_absoluteY="592dp"/>
 
 </RelativeLayout>
-
+</layout>

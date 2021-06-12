@@ -4,18 +4,16 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.myapplication.R
-import com.example.myapplication.repository.AuthRepository
+import com.example.myapplication.databinding.ActivityConversationBinding
 import com.example.myapplication.repository.ConversationRepository
 import com.example.myapplication.utils.Resource
-import com.example.myapplication.view.authorization.AuthorizationViewModel
-import com.example.myapplication.view.authorization.AuthorizationViewModelFactory
 
 class ConversationActivity : AppCompatActivity() {
     lateinit var viewModel: ConversationViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_conversation)
+        val binding = ActivityConversationBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val conversationRepository = ConversationRepository()
         val viewModelProviderFactory = ConversationVIewModelFactory(conversationRepository)

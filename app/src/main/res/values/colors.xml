@@ -13,7 +13,7 @@
     <color name="color_primary_dark">#000000</color>
     <color name="color_primary">#000000</color>
     <color name="color_accent">#000000</color>
-
+    <color name="colorAccent">#FFA000</color>
     <!-- Resources for Bank2LogInActivity -->
     <color name="bank2_log_in_activity_button_button_background_color">#EFF2F6</color>
 
