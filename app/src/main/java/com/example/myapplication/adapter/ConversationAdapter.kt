@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.myapplication.databinding.ItemConversationBinding
 import com.example.myapplication.model.response.conversation.ListData
 import com.example.myapplication.model.response.conversation.Messages

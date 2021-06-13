@@ -9,9 +9,11 @@ val prefs: SharedPref by lazy {
 class App : Application() {
     companion object {
         var prefs: SharedPref? = null
+        var userId=0
         lateinit var instance: App
             private set
     }
+
 
     override fun onCreate() {
         super.onCreate()

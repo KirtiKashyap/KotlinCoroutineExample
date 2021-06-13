@@ -9,9 +9,12 @@ import com.example.myapplication.utils.Resource
 import com.example.myapplication.utils.SharedPref
 
 class ConversationActivity : AppCompatActivity() {
-
+    lateinit var viewModel: ConversationViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_conversation)
+        val conversationRepository = ConversationRepository()
+        val viewModelProviderFactory = ConversationVIewModelFactory(conversationRepository)
+        viewModel = ViewModelProvider(this, viewModelProviderFactory).get(ConversationViewModel::class.java)
     }
 }
