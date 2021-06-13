@@ -1,8 +1,7 @@
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <fragment
+<?xml version="1.0" encoding="utf-8"?>
+    <androidx.fragment.app.FragmentContainerView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/newsNavHostFragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
@@ -10,4 +9,3 @@
         app:defaultNavHost="true"
         app:navGraph="@navigation/auth_nav_graph" />
 
-</layout>

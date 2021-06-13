@@ -2,30 +2,18 @@ package com.example.myapplication.view
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
-import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.R
-import com.example.myapplication.databinding.ActivityAuthorizationBinding
-import com.example.myapplication.model.request.TokenRequest
-import com.example.myapplication.repository.AuthRepository
-import com.example.myapplication.utils.Resource
-import com.example.myapplication.utils.SharedPref
-import com.example.myapplication.view.authorization.AuthorizationViewModel
-import com.example.myapplication.view.authorization.AuthorizationViewModelFactory
-import com.example.myapplication.view.conversation.ConversationActivity
 
 
 class AuthorizationActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding=ActivityAuthorizationBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
+        setContentView(R.layout.activity_authorization)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             // Create channel to show notifications.
