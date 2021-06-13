@@ -67,8 +67,8 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                 is Resource.Success -> {
                     //hideProgressBar()
                     response.data?.let {
-
-                        it
+                        it.data!!.id
+                        sharedPreference?.save("USER_ID",it.data!!.id!!)
                     }
                 }
                 is Resource.Error -> {

@@ -9,15 +9,13 @@
     <fragment
         android:id="@+id/conversationFragment"
         android:name="com.example.myapplication.view.conversation.ConversationFragment"
-        android:label="fragment_conversation"
-        tools:layout="@layout/fragment_conversation" >
+        android:label="ConversationFragment" >
         <action
-            android:id="@+id/action_conversationFragment_to_conversationDetailFragment"
-            app:destination="@id/conversationDetailFragment" />
+            android:id="@+id/action_conversationFragment_to_messageFragment"
+            app:destination="@id/messageFragment" />
     </fragment>
     <fragment
-        android:id="@+id/conversationDetailFragment"
-        android:name="com.example.myapplication.view.conversation.ConversationDetailFragment"
-        android:label="fragment_conversation_detail"
-        tools:layout="@layout/fragment_conversation_detail" />
+        android:id="@+id/messageFragment"
+        android:name="com.example.myapplication.view.message.MessageFragment"
+        android:label="MessageFragment" />
 </navigation>

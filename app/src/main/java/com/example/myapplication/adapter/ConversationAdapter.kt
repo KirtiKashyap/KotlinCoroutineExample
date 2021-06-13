@@ -4,6 +4,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.example.myapplication.databinding.ItemConversationBinding
 import com.example.myapplication.model.response.conversation.ListData
 import com.example.myapplication.model.response.conversation.Messages
@@ -50,9 +52,14 @@ class ConversationViewHolder(private val itemBinding: ItemConversationBinding,
     fun bind(participants: Participants, messages: Messages) {
         this.participents = participants
         this.messages=messages
-        //Glide.with(this).load(participants.photo).into(ivImage)
+
         itemBinding.tvName.text = participants.name
         itemBinding.tvMessage.text=messages.message
+
+        Glide.with(itemBinding.root)
+            .load(participants.photo)
+            .transform(CircleCrop())
+            .into(itemBinding.ivImage)
     }
 
     override fun onClick(v: View?) {

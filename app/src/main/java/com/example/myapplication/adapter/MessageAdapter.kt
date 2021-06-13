@@ -7,6 +7,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.App
 import com.example.myapplication.R
+import com.example.myapplication.model.response.conversation.ListData
+import com.example.myapplication.model.response.conversation.MessageList
 import com.example.myapplication.model.response.conversation.Messages
 import com.example.myapplication.utils.DateUtils
 import kotlinx.android.synthetic.main.my_message.view.*
@@ -17,13 +19,18 @@ private const val VIEW_TYPE_MY_MESSAGE = 1
 private const val VIEW_TYPE_OTHER_MESSAGE = 2
 
 class MessageAdapter : RecyclerView.Adapter<MessageViewHolder>() {
-    private val messages: ArrayList<Messages> = ArrayList()
+    private val messages: ArrayList<MessageList> = ArrayList()
 
-    fun addMessage(message: Messages){
+    fun addMessage(message: MessageList){
         messages.add(message)
         notifyDataSetChanged()
     }
 
+    fun setItems(items: ArrayList<MessageList>) {
+        messages.clear()
+        messages.addAll(items)
+        notifyDataSetChanged()
+    }
     override fun getItemCount(): Int {
         return messages.size
     }
@@ -57,7 +64,7 @@ class MessageAdapter : RecyclerView.Adapter<MessageViewHolder>() {
         private var messageText: TextView = view.txtMyMessage
         private var timeText: TextView = view.txtMyMessageTime
 
-        override fun bind(message: Messages) {
+        override fun bind(message: MessageList) {
             messageText.text = message.message
            // timeText.text = DateUtils.fromMillisToTimeString(message.time)
         }
@@ -66,9 +73,9 @@ class MessageAdapter : RecyclerView.Adapter<MessageViewHolder>() {
     inner class OtherMessageViewHolder (view: View) : MessageViewHolder(view) {
         private var messageText: TextView = view.txtOtherMessage
         private var userText: TextView = view.txtOtherUser
-        private var timeText: TextView = view.txtOtherMessageTime
+        //private var timeText: TextView = view.txtOtherMessageTime
 
-        override fun bind(message: Messages) {
+        override fun bind(message: MessageList) {
             messageText.text = message.message
             userText.text = message.message
             //timeText.text = DateUtils.fromMillisToTimeString(message.time)
@@ -77,5 +84,5 @@ class MessageAdapter : RecyclerView.Adapter<MessageViewHolder>() {
 }
 
 open class MessageViewHolder (view: View) : RecyclerView.ViewHolder(view) {
-    open fun bind(message:Messages) {}
+    open fun bind(message:MessageList) {}
 }

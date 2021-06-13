@@ -21,7 +21,7 @@ class ConversationFragment : Fragment(R.layout.fragment_conversation), Conversat
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = (activity as ConversationActivity).viewModel
+        viewModel = (activity as ConversationActivity).conversationViewModel
         setupRecyclerView()
         val sharedPreference= activity?.let { SharedPref(it.applicationContext) }
         val token =sharedPreference?.getValueString("APP_PREF_TOKEN_TYPE")+" "+sharedPreference?.getValueString("APP_PREF_ACCESS_TOKEN")
@@ -59,7 +59,7 @@ class ConversationFragment : Fragment(R.layout.fragment_conversation), Conversat
     }
     override fun onClickedConversation(id: Int?) {
         findNavController().navigate(
-            R.id.action_conversationFragment_to_conversationDetailFragment,
+            R.id.action_conversationFragment_to_messageFragment,
             bundleOf("id" to id)
         )
     }
