@@ -2,7 +2,7 @@
     <string name="app_name">My Application</string>
 
     <string name="don_t_have_an_account_sign_up">Don’t have an account? Sign Up</string>
-    <string name="welcome_back_log_in_to_continue_with_messaging">Welcome back. Log in to continue with Messaging.</string>
+    <string name="welcome_back_log_in_to_continue_with_messaging">Welcome in Messaging APP</string>
 
     <string name="default_notification_channel_name" translatable="true">Weather</string>
     <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
@@ -12,8 +12,7 @@
     <string name="msg_subscribe_failed">Failed to subscribe to weather topic</string>
     <string name="title_activity_splash">FullscreenActivity</string>
     <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="dummy_content">WELCOME</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

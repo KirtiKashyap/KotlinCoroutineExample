@@ -29,8 +29,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-
-
                 <Button
                     android:id="@+id/loginButton"
                     android:layout_width="295dp"
@@ -69,7 +67,6 @@
                     android:layout_width="295dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="-4dp"
-                    android:fontFamily="@font/font_opensans_light"
                     android:gravity="start"
                     android:lineSpacingMultiplier="1.5"
                     android:text="@string/welcome_back_log_in_to_continue_with_messaging"
@@ -271,23 +268,5 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <Button
-        android:id="@+id/button_button"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/bank2_log_in_activity_button_button_ripple"
-        android:fontFamily="@font/font_opensans_semibold"
-        android:gravity="center"
-        android:text="Login with Facebook"
-        android:textColor="#454C66"
-        android:textSize="13sp"
-        app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="592dp"/>
 
 </RelativeLayout>

@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:elevation="3dp"
+        card_view:cardCornerRadius="1dp">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -10,8 +16,8 @@
 
         <ImageView
             android:id="@+id/ivImage"
-            android:layout_width="160dp"
-            android:layout_height="90dp"
+            android:layout_width="120dp"
+            android:layout_height="80dp"
             android:scaleType="centerCrop"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -25,9 +31,9 @@
             android:ellipsize="end"
             android:maxLines="3"
             android:text="TITLE"
-            android:textColor="@android:color/black"
             android:textSize="15sp"
             android:textStyle="bold"
+            android:textColor="#454C66"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toRightOf="@+id/ivImage"
             app:layout_constraintTop_toTopOf="parent" />
@@ -37,17 +43,16 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:ellipsize="end"
             android:maxLines="5"
             android:text="DESCRIPTION"
-            android:textColor="@android:color/black"
+            android:textColor="#454C66"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/ivImage"
             app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
+    </androidx.cardview.widget.CardView>
 </layout>
