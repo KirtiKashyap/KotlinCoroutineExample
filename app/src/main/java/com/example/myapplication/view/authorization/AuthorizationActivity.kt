@@ -1,4 +1,4 @@
-package com.example.myapplication.view
+package com.example.myapplication.view.authorization
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -6,14 +6,20 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.R
-
+import com.example.myapplication.repository.AuthRepository
 
 class AuthorizationActivity : AppCompatActivity() {
-
+    lateinit var viewModel: AuthorizationViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_authorization)
+//val userDataBase=UserDatabase(this)
+        val authRepository = AuthRepository()
+        val viewModelProviderFactory = AuthorizationViewModelFactory(authRepository)
+        viewModel = ViewModelProvider(this, viewModelProviderFactory).get(
+                AuthorizationViewModel::class.java)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             // Create channel to show notifications.

@@ -37,7 +37,7 @@
             android:name="com.google.firebase.messaging.default_notification_channel_id"
             android:value="@string/default_notification_channel_id" /> <!-- [END fcm_default_channel] -->
         <activity android:name=".view.conversation.ConversationActivity" />
-        <activity android:name=".view.AuthorizationActivity"/>
+        <activity android:name=".view.authorization.AuthorizationActivity"/>
 
         <service android:name=".MyFirebaseInstanceIDService">
             <intent-filter>

@@ -48,4 +48,16 @@ class AuthorizationViewModel (private val authRepository: AuthRepository): ViewM
         }
         return Resource.Error(response.message())
     }
+
+
+    /*fun saveUserProfile(userProfile: UserProfile) = viewModelScope.launch {
+        authRepository.upsert(userProfile)
+    }
+
+    fun getSavedProfile() = authRepository.getSavedUserProfile()
+
+    fun deleteProfile(userProfile: UserProfile) = viewModelScope.launch {
+        authRepository.deleteUserProfile(userProfile)
+    }*/
+
 }

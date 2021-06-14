@@ -14,13 +14,15 @@ import com.example.myapplication.model.response.conversation.Participants
 class ConversationAdapter(private val listener: ConversationItemListener) : RecyclerView.Adapter<ConversationViewHolder>() {
 
     interface ConversationItemListener {
-        fun onClickedConversation(id: Int?)
+        fun onClickedConversation(id: Int?, id1: Int?)
     }
 
     private val participantList = ArrayList<Participants>()
     private val messageList = ArrayList<Messages>()
-
+    private val items= ArrayList<ListData>()
     fun setItems(items: ArrayList<ListData>) {
+        this.items.clear()
+        this.items.addAll(items)
         this.participantList.clear()
         this.messageList.clear()
         this.participantList.addAll(items[0].participants!!)
@@ -35,7 +37,7 @@ class ConversationAdapter(private val listener: ConversationItemListener) : Recy
 
     override fun getItemCount(): Int = participantList.size
 
-    override fun onBindViewHolder(holder: ConversationViewHolder, position: Int) = holder.bind(participantList!![position]!!,messageList!![position])
+    override fun onBindViewHolder(holder: ConversationViewHolder, position: Int) = holder.bind(participantList!![position]!!,messageList!![position],items)
 }
 
 class ConversationViewHolder(private val itemBinding: ItemConversationBinding,
@@ -45,13 +47,15 @@ class ConversationViewHolder(private val itemBinding: ItemConversationBinding,
 
     private lateinit var participents : Participants
     private lateinit var messages: Messages
+    private lateinit var conversationList: ListData
     init {
         itemBinding.root.setOnClickListener(this)
     }
 
-    fun bind(participants: Participants, messages: Messages) {
+    fun bind(participants: Participants, messages: Messages, conversationList: ArrayList<ListData>) {
         this.participents = participants
         this.messages=messages
+        this.conversationList=conversationList[0]
 
         itemBinding.tvName.text = participants.name
         itemBinding.tvMessage.text=messages.message
@@ -63,6 +67,6 @@ class ConversationViewHolder(private val itemBinding: ItemConversationBinding,
     }
 
     override fun onClick(v: View?) {
-        listener.onClickedConversation(participents.id)
+        listener.onClickedConversation(conversationList.id,participents.id)
     }
 }

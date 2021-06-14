@@ -5,8 +5,6 @@ import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.R
 import com.example.myapplication.repository.ConversationRepository
-import com.example.myapplication.utils.Resource
-import com.example.myapplication.utils.SharedPref
 import com.example.myapplication.view.message.MessageViewModel
 import com.example.myapplication.view.message.MessageViewModelFactory
 

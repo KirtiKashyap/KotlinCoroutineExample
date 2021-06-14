@@ -1,5 +1,6 @@
 package com.example.myapplication.data.remote
 
+import com.example.myapplication.model.request.SendMessage
 import com.example.myapplication.model.response.conversation.ConversationList
 import com.example.myapplication.model.request.TokenRequest
 import com.example.myapplication.model.response.conversation.MessageData
@@ -21,14 +22,16 @@ interface ApiService {
        "Content-Type: application/json"
    )
     @GET("message/conversation")
-    suspend fun getConversationList(@Header("AUTHORIZATION") value: String ): Response<ConversationList>
+    suspend fun getConversationList(
+       @Header("AUTHORIZATION") value: String ): Response<ConversationList>
 
     @Headers(
         "Accept: application/json",
         "Content-Type: application/json"
     )
     @GET("user/profile")
-    suspend fun getUserProfile(@Header("AUTHORIZATION") value: String ): Response<UserProfile>
+    suspend fun getUserProfile(
+        @Header("AUTHORIZATION") value: String ): Response<UserProfile>
 
 
     @Headers(
@@ -36,6 +39,20 @@ interface ApiService {
         "Content-Type: application/json"
     )
     @GET("message/conversation/{conversation_id}")
-    suspend fun getMessage(@Header("AUTHORIZATION") value: String, @Path("conversation_id")id: Int): Response<MessageData>
+    suspend fun getMessage(
+        @Header("AUTHORIZATION") value: String,
+        @Path("conversation_id")id: Int): Response<MessageData>
+
+    @Headers(
+        "Accept: application/json",
+        "Content-Type: application/json"
+    )
+    @HTTP(method = "POST",path = "message/conversation/{conversation_id}", hasBody = true)
+    //@POST("message/conversation/{conversation_id}")
+    suspend fun sendMessage(
+            @Header("AUTHORIZATION") value: String,
+            @Path("conversation_id")id: Int,
+            @Body sendMessage: SendMessage): Response<Unit>
+
 
 }

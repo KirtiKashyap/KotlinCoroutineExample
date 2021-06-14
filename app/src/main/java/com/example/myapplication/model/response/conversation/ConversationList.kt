@@ -3,14 +3,14 @@ package com.example.myapplication.model.response.conversation
 data class ConversationList(val data : List<ListData> ?)
 
 data class ListData(
-        val id: Int ?,
-        val started: String ?,
-        val starter_id: Int ?,
-        val accepted: Boolean ?,
-        val last_activity: String ?,
-        val reported: String ?,
-        val participants: List<Participants> ?,
-        val messages: List<Messages> ?
+        val id: Int,
+        val started: String,
+        val starter_id: Int,
+        val accepted: Boolean,
+        val last_activity: String,
+        val reported: String,
+        val participants: List<Participants>,
+        val messages: List<Messages>
 )
 
 data class Participants(

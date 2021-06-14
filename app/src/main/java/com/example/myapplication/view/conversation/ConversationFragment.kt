@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_conversation.*
 
+
 class ConversationFragment : Fragment(R.layout.fragment_conversation), ConversationAdapter.ConversationItemListener{
     lateinit var viewModel: ConversationViewModel
     val TAG = "ConversationFragment"
@@ -24,9 +25,11 @@ class ConversationFragment : Fragment(R.layout.fragment_conversation), Conversat
         viewModel = (activity as ConversationActivity).conversationViewModel
         setupRecyclerView()
         val sharedPreference= activity?.let { SharedPref(it.applicationContext) }
-        val token =sharedPreference?.getValueString("APP_PREF_TOKEN_TYPE")+" "+sharedPreference?.getValueString("APP_PREF_ACCESS_TOKEN")
+        val token=sharedPreference?.getValueString("APP_PREF_TOKEN")
 
-        viewModel.getList(token)
+        if (token != null) {
+            viewModel.getList(token)
+        }
         viewModel.conversationList.observe(viewLifecycleOwner, { response ->
             when(response) {
                 is Resource.Success -> {
@@ -57,10 +60,10 @@ class ConversationFragment : Fragment(R.layout.fragment_conversation), Conversat
             layoutManager = LinearLayoutManager(activity)
         }
     }
-    override fun onClickedConversation(id: Int?) {
+    override fun onClickedConversation(conversationId: Int?, participentId: Int?) {
         findNavController().navigate(
             R.id.action_conversationFragment_to_messageFragment,
-            bundleOf("id" to id)
+            bundleOf("conversationId" to conversationId,"participentId" to conversationId)
         )
     }
 
