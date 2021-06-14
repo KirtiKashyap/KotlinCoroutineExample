@@ -33,7 +33,7 @@ class MessageAdapter(private val userId: Int, private val participentId: Int) : 
 
     override fun getItemViewType(position: Int): Int {
         val message = messages[position]
-        return if(participentId == userId) {
+        return if(message.sender == userId) {
             VIEW_TYPE_MY_MESSAGE
         }
         else {
@@ -50,15 +50,14 @@ class MessageAdapter(private val userId: Int, private val participentId: Int) : 
     }
 
     override fun onBindViewHolder(holder: MessageViewHolder, position: Int) {
-        val message = messages.get(position)
+        val message = messages[position]
 
-        holder?.bind(message)
+        holder.bind(message)
     }
 
     inner class MyMessageViewHolder (view: View) : MessageViewHolder(view) {
         private var messageText: TextView = view.txtMyMessage
         private var timeText: TextView = view.txtMyMessageTime
-
         override fun bind(message: MessageList) {
             messageText.text = message.message
             timeText.text = message.sent
@@ -72,8 +71,8 @@ class MessageAdapter(private val userId: Int, private val participentId: Int) : 
 
         override fun bind(message: MessageList) {
             messageText.text = message.message
-            userText.visibility=View.INVISIBLE
-            timeText.text = message.sent
+            userText.text=message.sent
+            timeText.visibility = View.GONE
         }
     }
 }
