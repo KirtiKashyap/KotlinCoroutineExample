@@ -25,8 +25,10 @@ class ConversationAdapter(private val listener: ConversationItemListener) : Recy
         this.items.addAll(items)
         this.participantList.clear()
         this.messageList.clear()
-        this.participantList.addAll(items[0].participants!!)
-        this.messageList.addAll(items[0].messages!!)
+        for(ParticiPentAndMessage in items){
+            this.participantList.addAll(ParticiPentAndMessage.participants)
+            this.messageList.addAll(ParticiPentAndMessage.messages!!)
+        }
         notifyDataSetChanged()
     }
 

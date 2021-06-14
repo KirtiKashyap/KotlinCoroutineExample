@@ -58,9 +58,11 @@ class MessageAdapter(private val userId: Int, private val participentId: Int) : 
     inner class MyMessageViewHolder (view: View) : MessageViewHolder(view) {
         private var messageText: TextView = view.txtMyMessage
         private var timeText: TextView = view.txtMyMessageTime
+        private var userText: TextView = view.txtMyUser
         override fun bind(message: MessageList) {
             messageText.text = message.message
-            timeText.text = message.sent
+            userText.text=message.sent
+            timeText.visibility =View.GONE
         }
     }
 
